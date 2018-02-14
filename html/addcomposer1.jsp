@@ -25,7 +25,7 @@
 					<td>交響曲数</td><td><input type="text" name="maxNumber"></td>
 				</tr>
 				<tr bgcolor="#eeeeff">
-					<td>知名度</td><td><s:select name="namevalue" list="#{ '1':'有名','2':'中間','3':'無名' }"/></td>
+					<td>知名度</td><td><s:select name="namevalue" list="#{ '1':'有名','2':'中間','3':'無名' }" value="3"/></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center"><s:submit value="登録" /></td>
