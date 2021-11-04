@@ -1,12 +1,20 @@
 package kumagai.md.struts2;
 
-import java.sql.*;
-import java.util.*;
-import javax.servlet.*;
-import com.microsoft.sqlserver.jdbc.*;
-import org.apache.struts2.*;
-import org.apache.struts2.convention.annotation.*;
-import kumagai.md.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.ArrayList;
+
+import javax.servlet.ServletContext;
+
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.Result;
+
+import com.microsoft.sqlserver.jdbc.SQLServerDriver;
+
+import kumagai.md.DiskAndRecord;
+import kumagai.md.DiskAndRecordCollection;
 
 /**
  * 最近の録音リスト表示アクション用フォーム。
@@ -17,7 +25,6 @@ import kumagai.md.*;
 public class RecentRecordAction
 {
 	public ArrayList<DiskAndRecord> recentRecords;
-	public YearMonthCountTable yearMonthCountTable;
 
 	/**
 	 * 最近の録音リスト表示アクション用フォーム。
@@ -38,12 +45,7 @@ public class RecentRecordAction
 
 		recentRecords = DiskAndRecordCollection.getRecentRecords(connection);
 
-		ArrayList<YearMonthCount> perMonthCount =
-			RecordCollection.getPerMonthCount(connection);
-
 		connection.close();
-
-		yearMonthCountTable = new YearMonthCountTable(perMonthCount);
 
 		return "success";
 	}

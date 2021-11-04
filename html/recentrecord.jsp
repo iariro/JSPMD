@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<title>MDリスト - 最近の録音一覧</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" type="text/css" href="hatena.css">
 	</head>
 
@@ -15,40 +15,6 @@
 		<div class=hatena-body>
 		<div class=main>
 		<div class=day>
-
-			<table>
-				<tr>
-					<td></td>
-					<th width="35">1月</th>
-					<th width="35">2月</th>
-					<th width="35">3月</th>
-					<th width="35">4月</th>
-					<th width="35">5月</th>
-					<th width="35">6月</th>
-					<th width="35">7月</th>
-					<th width="35">8月</th>
-					<th width="35">9月</th>
-					<th width="35">10月</th>
-					<th width="35">11月</th>
-					<th width="35">12月</th>
-				</tr>
-
-				<s:iterator value="yearMonthCountTable">
-				<tr>
-					<th><s:property value="year" />年</th>
-					<s:iterator value="monthCount" var="count">
-						<s:if test="%{#count>0}">
-							<td align="right"><s:property /></td>
-						</s:if>
-						<s:else>
-							<td>　</td>
-						</s:else>
-					</s:iterator>
-				</tr>
-				</s:iterator>
-			</table>
-
-			<br>
 
 			<table>
 				<tr>

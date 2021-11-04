@@ -13,6 +13,10 @@
 	<body>
 		<h1>MD曲管理</h1>
 
+		<div class=hatena-body>
+		<div class=main>
+		<div class=day>
+
 		<h3>表示</h3>
 		<ul>
 			<s:form action="symphonylist" theme="simple">
@@ -47,6 +51,9 @@
 			<s:form action="disklist" theme="simple">
 				<s:submit value="ディスクリスト表示" />
 			</s:form>
+			<s:form action="recordcountgraph" theme="simple">
+				<s:submit value="録音数時系列グラフ" />
+			</s:form>
 			<s:form action="recentrecord" theme="simple">
 				<s:submit value="最近の録音一覧" />
 			</s:form>
@@ -66,5 +73,9 @@
 			</s:form>
 			<a href="addcomposer1.jsp">作曲家登録</a>
 		</ul>
+
+		</div>
+		</div>
+		</div>
 	</body>
 </html>
