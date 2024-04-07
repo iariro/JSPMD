@@ -32,7 +32,16 @@ public class RecordFlagAndColor
 	 * 録音の有無を取得。
 	 * @return 録音の有無
 	 */
-	public String getRecord()
+	public boolean getRecord()
+	{
+		return record;
+	}
+
+	/**
+	 * 録音の有無を取得。
+	 * @return 録音の有無
+	 */
+	public String getRecordMark()
 	{
 		return record ? "○" : new String();
 	}

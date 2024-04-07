@@ -34,6 +34,7 @@
 				<input type="hidden" name="maxNumber" value="105">
 				<input type="hidden" name="perDisk" value="3">
 				<s:submit value="ハイドン" />
+				<s:select name="listtype" list="#{ '1':'縦横','2':'縦一列' }"/>
 			</s:form>
 			<s:form action="composeronlylist" theme="simple">
 				<input type="hidden" name="composerName" value="モーツァルト">
@@ -41,6 +42,7 @@
 				<input type="hidden" name="maxNumber" value="41">
 				<input type="hidden" name="perDisk" value="2">
 				<s:submit value="モーツァルト" />
+				<s:select name="listtype" list="#{ '1':'縦横','2':'縦一列' }"/>
 			</s:form>
 			<s:form action="etclist" theme="simple">
 				<s:submit value="交響曲以外一覧リスト" />

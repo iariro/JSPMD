@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<title>MDリスト - <s:property value="composerName" />交響曲一覧</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" type="text/css" href="hatena.css">
 	</head>
 
@@ -16,16 +16,12 @@
 		<div class=main>
 		<div class=day>
 
+			<s:property value="count" /> / <s:property value="maxNumber" />
 			<table>
-				<tr>
-					<th>ナンバー</th>
-					<th>録音</th>
-				</tr>
-
-				<s:iterator value="array">
+				<s:iterator value="array2">
 					<tr bgcolor="<s:property value="color" />">
 						<td><s:property value="number" /></td>
-						<td><s:property value="record" /></td>
+						<td><s:property value="recordMark" /></td>
 					</tr>
 				</s:iterator>
 			</table>

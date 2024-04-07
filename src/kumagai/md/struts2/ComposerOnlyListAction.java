@@ -1,26 +1,43 @@
 package kumagai.md.struts2;
 
-import java.sql.*;
-import java.util.*;
-import javax.servlet.*;
-import com.microsoft.sqlserver.jdbc.*;
-import org.apache.struts2.*;
-import org.apache.struts2.convention.annotation.*;
-import kumagai.md.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import javax.servlet.ServletContext;
+
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.convention.annotation.Results;
+
+import com.microsoft.sqlserver.jdbc.SQLServerDriver;
+
+import kumagai.md.RecordFlagAndColor;
 
 /**
  * １作曲家分の交響曲録音状況一覧表示アクション。
  * @author kumagai
  */
 @Namespace("/md")
-@Result(name="success", location="/md/composeronlylist.jsp")
+@Results
+({
+	@Result(name="success1", location="/md/composeronlylist1.jsp"),
+	@Result(name="success2", location="/md/composeronlylist2.jsp")
+})
 public class ComposerOnlyListAction
 {
 	public String composerName;
 	public String composerId;
 	public String maxNumber;
+	public int count;
 	public String perDisk;
-	public ArrayList<RecordFlagAndColor> array;
+	public String listtype;
+	public ArrayList<ArrayList<RecordFlagAndColor>> array1;
+	public ArrayList<RecordFlagAndColor> array2;
 
 	/**
 	 * １作曲家分の交響曲録音状況一覧表示アクション。
@@ -61,6 +78,7 @@ public class ComposerOnlyListAction
 			try
 			{
 				flagArray[Integer.valueOf(title) - 1] = true;
+				count++;
 			}
 			catch (NumberFormatException exception)
 			{
@@ -72,7 +90,9 @@ public class ComposerOnlyListAction
 		statement.close();
 		connection.close();
 
-		this.array = new ArrayList<RecordFlagAndColor>();
+		this.array1 = new ArrayList<ArrayList<RecordFlagAndColor>>();
+		ArrayList<RecordFlagAndColor> array12 = null;
+		this.array2 = new ArrayList<RecordFlagAndColor>();
 
 		for (int i=0 ; i<max ; i++)
 		{
@@ -99,9 +119,17 @@ public class ComposerOnlyListAction
 					throw new Exception();
 			}
 
-			this.array.add(new RecordFlagAndColor(i + 1, flagArray[i], color));
+			if (i % 10 == 0)
+			{
+				array12 = new ArrayList<RecordFlagAndColor>();
+				this.array1.add(array12);
+			}
+
+			RecordFlagAndColor recordFlagAndColor = new RecordFlagAndColor(i + 1, flagArray[i], color);
+			array12.add(recordFlagAndColor);
+			this.array2.add(recordFlagAndColor);
 		}
 
-		return "success";
+		return "success" + listtype;
 	}
 }
