@@ -23,6 +23,7 @@
 			Highcharts.setOptions({ global: { useUTC: false } });
 			options =
 			{
+				time: { useUTC: false },
 				chart: {renderTo: 'chart', zoomType:'xy', plotBackgroundColor: 'lightgray'},
 				title: {text: '録音数時系列グラフ'},
 				xAxis: {title: null, type: 'datetime'},
